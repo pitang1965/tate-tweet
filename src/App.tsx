@@ -9,8 +9,8 @@ import {
   useMantineTheme,
   Title,
 } from '@mantine/core';
-import MainView from './Components/MainView';
-import Footer from './Components/Footer';
+import MainView from './components/MainView';
+import Footer from './components/Footer';
 
 const title = <Title order={1}>たてツイート</Title>;
 
@@ -34,7 +34,7 @@ function App(): JSX.Element {
       aside={
         <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
           <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
-            <Text>Application sidebar</Text>
+            <Text size='md'>広告</Text>
           </Aside>
         </MediaQuery>
       }
