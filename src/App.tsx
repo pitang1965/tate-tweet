@@ -1,78 +1,76 @@
 import { useState } from 'react';
-import './App.css';
-import { createStyles, Button, Stack, Textarea, Title } from '@mantine/core';
-import { useClipboard, useDebouncedValue } from '@mantine/hooks';
+import {
+  AppShell,
+  Navbar,
+  Header,
+  Aside,
+  Text,
+  MediaQuery,
+  Burger,
+  useMantineTheme,
+  Title,
+} from '@mantine/core';
+import MainView from './Components/MainView';
+import Footer from './Components/Footer';
 
-const useStyles = createStyles((/* theme, _params, getRef */) => ({
-  textarea: {
-    width: '90%',
-  },
-}));
+const title = <Title order={1}>たてツイート</Title>;
 
-const reverceString = (text: string) => text.split('').reverse().join('');
-
-const halfToFullWidthCharacters = (text: string) =>
-  text.replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
-
-function App() {
-  const { classes } = useStyles();
-
-  const clipboard = useClipboard({ timeout: 500 });
-  const handleCopy = () => {
-    clipboard.copy(debounced);
-  };
-
-  const [tweet, setTweet] = useState('');
-  const [debounced] = useDebouncedValue(
-    halfToFullWidthCharacters(reverceString(tweet)),
-    200
-  );
+function App(): JSX.Element {
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <Title order={1}>
-          たてツイート
-        </Title>
-        <p>ツイートを縦書きに変換します。</p>
-        <Textarea
-          placeholder='文章を入力してください。'
-          label='ツイートを入力'
-          radius='xs'
-          size='lg'
-          required
-          value={tweet}
-          onChange={(event) => setTweet(event.currentTarget.value)}
-          className={classes.textarea}
-        />
-        <Textarea
-          placeholder='縦書きで表示されます'
-          label='縦書きツイート'
-          radius='xs'
-          size='lg'
-          disabled
-          value={debounced}
-          className={classes.textarea}
-        />
-        <Button
-          variant='gradient'
-          gradient={{ from: 'indigo', to: 'cyan' }}
-          onClick={handleCopy}
+    <AppShell
+      styles={{
+        main: {
+          background:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        },
+      }}
+      navbarOffsetBreakpoint='sm'
+      asideOffsetBreakpoint='sm'
+      fixed
+      navbar={
+        <Navbar
+          p='md'
+          hiddenBreakpoint='sm'
+          hidden={!opened}
+          width={{ sm: 200, lg: 300 }}
         >
-          Copy
-        </Button>
-        <p>
-          <a
-            className='App-link'
-            href='https://over40web.club'
-            target='_blank'
-            rel='noopener noreferrer'
+          <Text>Application navbar</Text>
+        </Navbar>
+      }
+      aside={
+        <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
+          <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
+            <Text>Application sidebar</Text>
+          </Aside>
+        </MediaQuery>
+      }
+      footer={<Footer />}
+      header={
+        <Header height={70} p='md'>
+          <div
+            style={{ display: 'flex', alignItems: 'center', height: '100%' }}
           >
-            Powerd by Over 40 Web Club
-          </a>
-        </p>
-      </header>
-    </div>
+            <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size='sm'
+                color={theme.colors.gray[6]}
+                mr='xl'
+              />
+            </MediaQuery>
+            {title}
+          </div>
+        </Header>
+      }
+    >
+      <MainView />
+    </AppShell>
   );
 }
 
