@@ -5,7 +5,8 @@ import { conv2TateTweet, getCharLength } from '../lib/convTweet';
 
 const useStyles = createStyles((/* theme, _params, getRef */) => ({
   textarea: {
-    width: '90%',
+    width: '31em',
+    maxWidth: '90%',
   },
 }));
 
@@ -19,7 +20,7 @@ const MainView = () => {
   }
 
   const [tweet, setTweet] = useState('');
-  const [tateTweet] = useDebouncedValue(conv2TateTweet(tweet), 200);
+  const [tateTweet] = useDebouncedValue(conv2TateTweet(tweet, 'full'), 200);
   const [noOfCharOfTweet, setNoOfCharOfTweet] = useState(0);
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
 
@@ -40,6 +41,8 @@ const MainView = () => {
         value={tweet}
         onChange={(event) => setTweet(event.currentTarget.value)}
         className={classes.textarea}
+        minRows={6}
+        autosize={true}
       />
       <Text size='sm'>全角{noOfCharOfTweet}文字</Text>
       <Space h='md' />
@@ -48,9 +51,10 @@ const MainView = () => {
         label='縦書きツイート'
         radius='xs'
         size='lg'
-        disabled
         value={tateTweet}
         className={classes.textarea}
+        minRows={12}
+        autosize={true}
       />
       <Text size='sm'>全角{noOfCharOfTateTweet}文字</Text>
       <Space h='md' />
