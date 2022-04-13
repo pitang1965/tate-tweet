@@ -10,7 +10,7 @@ const useStyles = createStyles((/* theme, _params, getRef */) => ({
   },
 }));
 
-const MainView = () => {
+function MainView(): JSX.Element {
   const { classes } = useStyles();
 
   const clipboard = useClipboard({ timeout: 500 });
@@ -42,8 +42,7 @@ const MainView = () => {
         onChange={(event) => setTweet(event.currentTarget.value)}
         className={classes.textarea}
         minRows={6}
-        autosize={true}
-      />
+        autosize={true} />
       <Text size='sm'>全角{noOfCharOfTweet}文字</Text>
       <Space h='md' />
       <Textarea
@@ -54,8 +53,7 @@ const MainView = () => {
         value={tateTweet}
         className={classes.textarea}
         minRows={12}
-        autosize={true}
-      />
+        autosize={true} />
       <Text size='sm'>全角{noOfCharOfTateTweet}文字</Text>
       <Space h='md' />
       <Button
@@ -67,6 +65,6 @@ const MainView = () => {
       </Button>
     </>
   );
-};
+}
 
 export default MainView;
