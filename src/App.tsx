@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   AppShell,
+  Navbar,
   Header,
   Aside,
   Text,
@@ -31,6 +32,12 @@ function App(): JSX.Element {
       navbarOffsetBreakpoint='sm'
       asideOffsetBreakpoint='sm'
       fixed
+      navbar={
+        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
+          <Navbar.Section mt="xs">{<p>Tweet</p>}</Navbar.Section>
+          <Navbar.Section mt="xs">{<p>About</p>}</Navbar.Section>
+        </Navbar>
+      }
       aside={
         <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
           <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
