@@ -2,12 +2,18 @@ import GraphemeSplitter from 'grapheme-splitter';
 
 const splitter = new GraphemeSplitter();
 
+// 文字列を反転
+const reverseString = (text: string) => text.split('').reverse().join('');
+
+// 文字が空白文字かどうか
+const isSpeceCharacter = (str: string) => str[0] === ' ' || str[0] === '　';
+
 // 文字が改行文字かどうか
-const isNewLineCharacter = (aChar: string) =>
-  aChar[0] === '\r' || aChar[0] === '\n';
+const isNewLineCharacter = (str: string) =>
+  str[0] === '\r' || str[0] === '\n';
 
 // 文字が半角かどうか
-const isHalfWidthChar = (aChar: string) => aChar[0] >= '!' && aChar[0] <= '~';
+const isHalfWidthChar = (str: string) => str[0] >= '!' && str[0] <= '~';
 
 export const reverceString = (text: string) =>
   text.split('').reverse().join('');
@@ -70,22 +76,38 @@ export const conv2TateTweet = (
   console.table(spaceAddedStringArray);
 
   // 縦書きに変換
-  let finalString: string = '';
+  let tateString: string = '';
   for (let col = 0; col < colSize; col++) {
     for (let row = spaceAddedStringArray.length - 1; row >= 0; row--) {
-      finalString += spaceAddedStringArray[row][col];
+      tateString += spaceAddedStringArray[row][col];
       if (row !== 0) {
         if (wideLineSpacing === 'half') {
-          finalString += ' ';
+          tateString += ' ';
         } else if (wideLineSpacing === 'full') {
-          finalString += '　';
+          tateString += '　';
         }
       }
     }
     if (col < colSize - 1) {
-      finalString += '\n';
+      tateString += '\n';
     }
   }
+
+  // 右側の無駄なスペースを削除
+  let trimedString: string = '';
+  let status: 'toBeTrimmed' | 'notToBeTrimmed' = 'toBeTrimmed';
+
+  for (let i = tateString.length - 1; i >= 0; i--) {
+    if (status === 'toBeTrimmed' && isSpeceCharacter(tateString[i])) {
+      continue;
+    } else if (isNewLineCharacter(tateString[i])) {
+      status = 'toBeTrimmed';
+    } else {
+      status = 'notToBeTrimmed';
+    }
+    trimedString += tateString[i];
+  }
+  const finalString = reverseString(trimedString);
 
   return finalString;
 };
