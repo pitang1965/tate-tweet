@@ -36,9 +36,11 @@ export const getCharLength = (str: string): number => {
   return charCount;
 };
 
+export type LineSpacing = 'none' | 'half' | 'full';
+
 export const conv2TateTweet = (
   str: string,
-  wideLineSpacing: 'none' | 'half' | 'full' = 'full'
+  lineSpacing:LineSpacing = 'full'
 ) => {
   let stringArray: string[][] = [];
 
@@ -81,9 +83,9 @@ export const conv2TateTweet = (
     for (let row = spaceAddedStringArray.length - 1; row >= 0; row--) {
       tateString += spaceAddedStringArray[row][col];
       if (row !== 0) {
-        if (wideLineSpacing === 'half') {
+        if (lineSpacing === 'half') {
           tateString += ' ';
-        } else if (wideLineSpacing === 'full') {
+        } else if (lineSpacing === 'full') {
           tateString += '　';
         }
       }
