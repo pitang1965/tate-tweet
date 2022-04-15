@@ -10,7 +10,6 @@ import {
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
 import { conv2TateTweet, getCharLength } from '../lib/convTweet';
-import type { LineSpacing } from '../lib/convTweet';
 
 const useStyles = createStyles((/* theme, _params, getRef */) => ({
   textarea: {
@@ -28,10 +27,10 @@ function MainView(): JSX.Element {
     clipboard.copy(tateTweet);
   }
 
-  const [lineSpacing, setLineSpacing] = useState<LineSpacing>('full');
+  const [lineSpacing, setLineSpacing] = useState('full');
 
   const [tweet, setTweet] = useState('');
-  const [tateTweet] = useDebouncedValue(conv2TateTweet(tweet, lineSpacing), 200);
+  const [tateTweet] = useDebouncedValue(conv2TateTweet(tweet, lineSpacing as 'none' | 'half' | 'full'), 200);
   const [noOfCharOfTweet, setNoOfCharOfTweet] = useState(0);
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
 

@@ -37,11 +37,9 @@ export const getCharLength = (str: string): number => {
   return charCount;
 };
 
-export type LineSpacing = 'none' | 'half' | 'full';
-
 export const conv2TateTweet = (
   str: string,
-  lineSpacing:LineSpacing = 'full'
+  lineSpacing:'none' | 'half' | 'full' = 'full'
 ) => {
   let stringArray: string[][] = [];
 
