@@ -13,7 +13,7 @@ const isNewLineCharacter = (str: string) =>
   str[0] === '\r' || str[0] === '\n';
 
 // 文字が半角かどうか
-const isHalfWidthChar = (str: string) => str[0] >= '!' && str[0] <= '~';
+const isHalfWidthChar = (str: string) => /^[\x20-\x7e]*$/.test(str[0]);
 
 export const reverceString = (text: string) =>
   text.split('').reverse().join('');
@@ -24,6 +24,7 @@ const halfToFullWidthCharacters = (text: string) =>
 // 文字数カウントのルール
 // 改行と半角は0.5、全角と絵文字は1
 export const getCharLength = (str: string): number => {
+  console.log('★', isHalfWidthChar(' '));
   if (str === null) return 0;
   const split: string[] = splitter.splitGraphemes(str);
   const charCount = split.reduce(
