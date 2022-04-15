@@ -10,7 +10,7 @@ import {
   useMantineTheme,
   Title,
 } from '@mantine/core';
-import MainView from './components/MainView';
+import MainView from './pages/Home';
 import Footer from './components/Footer';
 
 const title = <Title order={1}>たてツイート</Title>;
