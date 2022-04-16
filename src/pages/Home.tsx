@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   createStyles,
+  Alert,
   Button,
   RadioGroup,
   Radio,
@@ -9,6 +10,7 @@ import {
   Textarea,
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
+import { AlertCircle } from 'tabler-icons-react';
 import { conv2TateTweet, getCharLength } from '../lib/convTweet';
 
 const useStyles = createStyles((/* theme, _params, getRef */) => ({
@@ -30,7 +32,10 @@ function MainView(): JSX.Element {
   const [lineSpacing, setLineSpacing] = useState('full');
 
   const [tweet, setTweet] = useState('');
-  const [tateTweet] = useDebouncedValue(conv2TateTweet(tweet, lineSpacing as 'none' | 'half' | 'full'), 200);
+  const [tateTweet] = useDebouncedValue(
+    conv2TateTweet(tweet, lineSpacing as 'none' | 'half' | 'full'),
+    200
+  );
   const [noOfCharOfTweet, setNoOfCharOfTweet] = useState(0);
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
 
@@ -39,7 +44,6 @@ function MainView(): JSX.Element {
     setNoOfCharOfTateTweet(getCharLength(tateTweet));
   }, [tateTweet, lineSpacing]);
 
-
   return (
     <>
       <p>ツイートを縦書きに変換します。</p>
@@ -47,7 +51,7 @@ function MainView(): JSX.Element {
         placeholder='文章を入力してください。'
         label='ツイートを入力'
         radius='xs'
-        size='lg'
+        size='md'
         required
         value={tweet}
         onChange={(event) => setTweet(event.currentTarget.value)}
@@ -63,7 +67,7 @@ function MainView(): JSX.Element {
         description='縦書きしたときの行間を設定します。'
         spacing='xl'
         color='grape'
-        onChange ={setLineSpacing}
+        onChange={setLineSpacing}
       >
         <Radio value='full' label='全角' />
         <Radio value='half' label='半角' />
@@ -74,13 +78,15 @@ function MainView(): JSX.Element {
         placeholder='縦書きで表示されます'
         label='縦書きツイート'
         radius='xs'
-        size='lg'
+        size='md'
         value={tateTweet}
         className={classes.textarea}
         minRows={12}
         autosize={true}
       />
-      <Text size='sm'>全角{noOfCharOfTateTweet}文字</Text>
+      <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
+        全角{noOfCharOfTateTweet}文字
+      </Text>
       <Space h='md' />
       <Button
         variant='gradient'
@@ -89,6 +95,23 @@ function MainView(): JSX.Element {
       >
         Copy
       </Button>
+      <Space h='md' />
+      {noOfCharOfTateTweet > 140 ? (
+        <Alert
+          icon={<AlertCircle size={16} />}
+          title='文字数オーバー!'
+          color='red'
+          radius='md'
+          variant='filled'
+        >
+          ツイートは全角140文字までです。
+          {lineSpacing !== 'none'
+            ? '行間を変更するか、改行位置を調整するか、ツイートを短くしてください。'
+            : '改行位置を調整するか、ツイートを短くしてください'}
+        </Alert>
+      ) : (
+        ''
+      )}
     </>
   );
 }
