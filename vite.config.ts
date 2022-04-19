@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       includeAssets: [
+        'offline.html',
         'favicon.svg',
         'favicon.ico',
         'robots.txt',

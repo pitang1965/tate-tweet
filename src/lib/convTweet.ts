@@ -24,7 +24,6 @@ const halfToFullWidthCharacters = (text: string) =>
 // 文字数カウントのルール
 // 改行と半角は0.5、全角と絵文字は1
 export const getCharLength = (str: string): number => {
-  console.log('★', isHalfWidthChar(' '));
   if (str === null) return 0;
   const split: string[] = splitter.splitGraphemes(str);
   const charCount = split.reduce(
