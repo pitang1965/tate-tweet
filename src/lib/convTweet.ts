@@ -21,7 +21,7 @@ const isHalfWidthChar = (str: string) => /^[\x20-\x7e]*$/.test(str[0]);
 
 // 半角を全角に変換
 const halfToFullWidthCharacters = (text: string) =>
-  text.replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0).split('－').join('｜'));
+  text.replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0)).replace(/[-－﹣−‐⁃‑‒–—﹘―⎯⏤ーｰ─━～]/g, '｜');
 
 // 文字数カウントのルール
 // 改行と半角は0.5、全角と絵文字は1
