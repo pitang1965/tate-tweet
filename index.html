@@ -43,6 +43,7 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- PWA -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -52,6 +53,26 @@
             .catch((err) => console.log('サービスワーカーの登録失敗', err));
         });
       }
+    </script>
+    <!-- Tweetボタン -->
+    <script>
+      window.twttr = (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function (f) {
+          t._e.push(f);
+        };
+
+        return t;
+      })(document, 'script', 'twitter-wjs');
     </script>
   </body>
 </html>

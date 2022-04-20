@@ -18,6 +18,11 @@ const useStyles = createStyles((/* theme, _params, getRef */) => ({
     width: '31em',
     maxWidth: '90%',
   },
+  buttons: {
+    display: 'flex',
+    gap: '1rem',
+    alignItems: 'center',
+  },
 }));
 
 function MainView(): JSX.Element {
@@ -88,13 +93,22 @@ function MainView(): JSX.Element {
         全角{noOfCharOfTateTweet}文字
       </Text>
       <Space h='md' />
-      <Button
-        variant='gradient'
-        gradient={{ from: 'indigo', to: 'cyan' }}
-        onClick={handleCopy}
-      >
-        Copy
-      </Button>
+      <div className={classes.buttons}>
+        <Button
+          variant='gradient'
+          gradient={{ from: 'indigo', to: 'cyan' }}
+          onClick={handleCopy}
+        >
+          Copy
+        </Button>
+        <a
+          className='twitter-share-button'
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(tateTweet)}`}
+          data-size='large'
+        >
+          Tweet
+        </a>
+      </div>
       <Space h='md' />
       {noOfCharOfTateTweet > 140 ? (
         <Alert
