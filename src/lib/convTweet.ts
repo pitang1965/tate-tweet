@@ -15,11 +15,13 @@ const isNewLineCharacter = (str: string) =>
 // 文字が半角かどうか
 const isHalfWidthChar = (str: string) => /^[\x20-\x7e]*$/.test(str[0]);
 
-export const reverceString = (text: string) =>
-  text.split('').reverse().join('');
+// 文字列を反転
+// export const reverceString = (text: string) =>
+//   text.split('').reverse().join('');
 
+// 半角を全角に変換
 const halfToFullWidthCharacters = (text: string) =>
-  text.replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
+  text.replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0).split('－').join('｜'));
 
 // 文字数カウントのルール
 // 改行と半角は0.5、全角と絵文字は1
