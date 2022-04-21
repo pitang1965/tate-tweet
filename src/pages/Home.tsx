@@ -103,7 +103,9 @@ function MainView(): JSX.Element {
         </Button>
         <a
           className='twitter-share-button'
-          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(tateTweet)}`}
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            tateTweet
+          )}`}
           data-size='large'
         >
           Tweet
