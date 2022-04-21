@@ -10,7 +10,7 @@ import {
   Textarea,
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
-import { AlertCircle } from 'tabler-icons-react';
+import { AlertCircle, BrandTwitter } from 'tabler-icons-react';
 import { conv2TateTweet, getCharLength } from '../lib/convTweet';
 
 const useStyles = createStyles((/* theme, _params, getRef */) => ({
@@ -96,20 +96,35 @@ function MainView(): JSX.Element {
       <div className={classes.buttons}>
         <Button
           variant='gradient'
-          gradient={{ from: 'indigo', to: 'cyan' }}
+          gradient={{ from: 'purple', to: 'pink' }}
           onClick={handleCopy}
         >
-          Copy
+          コピー
         </Button>
-        <a
-          className='twitter-share-button'
+        <Button
+          component='a'
+          target='_blank'
+          rel='noopener noreferrer'
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
             tateTweet
           )}`}
-          data-size='large'
+          leftIcon={<BrandTwitter size={18} />}
+          styles={(theme) => ({
+            root: {
+              backgroundColor: '#00acee',
+              paddingRight: 20,
+
+              '&:hover': {
+                backgroundColor: theme.fn.darken('#00acee', 0.05),
+              },
+            },
+            leftIcon: {
+              marginRight: 10,
+            },
+          })}
         >
-          Tweet
-        </a>
+          Twitterに飛ぶ
+        </Button>
       </div>
       <Space h='md' />
       {noOfCharOfTateTweet > 140 ? (
