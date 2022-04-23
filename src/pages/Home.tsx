@@ -22,6 +22,7 @@ const useStyles = createStyles((/* theme, _params, getRef */) => ({
     display: 'flex',
     gap: '1rem',
     alignItems: 'center',
+    marginTop: '0.5rem',
   },
 }));
 
@@ -52,7 +53,7 @@ function MainView(): JSX.Element {
         placeholder='文章を入力してください。'
         label='ツイートを入力'
         radius='xs'
-        size='md'
+        size='lg'
         required
         value={tweet}
         onChange={(event) => setTweet(event.currentTarget.value)}
@@ -60,15 +61,17 @@ function MainView(): JSX.Element {
         minRows={6}
         autosize={true}
       />
-      <Text size='sm'>全角{noOfCharOfTweet}文字</Text>
-      <Button
-        variant='gradient'
-        gradient={{ from: 'orange', to: 'pink' }}
-        onClick={handleClear}
-      >
-        消去
-      </Button>
-      <Space h='md' />
+      <div className={classes.buttons}>
+        <Text size='sm'>全角{noOfCharOfTweet}文字</Text>
+        <Button
+          variant='gradient'
+          gradient={{ from: 'orange', to: 'pink' }}
+          onClick={handleClear}
+        >
+          消去
+        </Button>
+      </div>
+
       <RadioGroup
         value={lineSpacing}
         label='行間'
@@ -86,17 +89,17 @@ function MainView(): JSX.Element {
         placeholder='縦書きで表示されます'
         label='縦書きツイート'
         radius='xs'
-        size='md'
+        size='lg'
         value={tateTweet}
         className={classes.textarea}
         minRows={12}
         autosize={true}
       />
-      <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
-        全角{noOfCharOfTateTweet}文字
-      </Text>
-      <Space h='md' />
+
       <div className={classes.buttons}>
+        <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
+          全角{noOfCharOfTateTweet}文字
+        </Text>
         <Button
           variant='gradient'
           gradient={{ from: 'purple', to: 'pink' }}
@@ -129,6 +132,7 @@ function MainView(): JSX.Element {
           Twitterに飛ぶ
         </Button>
       </div>
+
       <Space h='md' />
       {noOfCharOfTateTweet > 140 ? (
         <Alert
