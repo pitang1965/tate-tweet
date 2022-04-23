@@ -8,7 +8,6 @@ import {
   Header,
   MediaQuery,
   Navbar,
-  Text,
   Title,
   useMantineTheme,
 } from '@mantine/core';
@@ -17,6 +16,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 
+import AsidePane from './components/AsidePane';
 import Footer from './components/Footer';
 
 const title = <Title order={1}>たてツイート</Title>;
@@ -61,7 +61,7 @@ function App(): JSX.Element {
         aside={
           <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
             <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
-              <Text size='md'>広告</Text>
+              <AsidePane />
             </Aside>
           </MediaQuery>
         }
