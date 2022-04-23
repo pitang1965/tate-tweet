@@ -1,13 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import {
-  Anchor,
   AppShell,
   Aside,
   Burger,
   Header,
   MediaQuery,
-  Navbar,
   Title,
   useMantineTheme,
 } from '@mantine/core';
@@ -16,6 +14,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 
+import Navbar from './components/Navbar';
 import AsidePane from './components/AsidePane';
 import Footer from './components/Footer';
 
@@ -39,25 +38,7 @@ function App(): JSX.Element {
         navbarOffsetBreakpoint='sm'
         asideOffsetBreakpoint='sm'
         fixed
-        navbar={
-          <Navbar
-            p='md'
-            hiddenBreakpoint='sm'
-            hidden={!opened}
-            width={{ sm: 200, lg: 300 }}
-          >
-            <Navbar.Section mt='xs'>
-              <Anchor component={Link} to='/'>
-                Tweet
-              </Anchor>
-            </Navbar.Section>
-            <Navbar.Section mt='xs'>
-              <Anchor component={Link} to='about'>
-                About
-              </Anchor>
-            </Navbar.Section>
-          </Navbar>
-        }
+        navbar={<Navbar opened={opened} />}
         aside={
           <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
             <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
