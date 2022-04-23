@@ -27,15 +27,8 @@ const useStyles = createStyles((/* theme, _params, getRef */) => ({
 
 function MainView(): JSX.Element {
   const { classes } = useStyles();
-
   const clipboard = useClipboard({ timeout: 500 });
-
-  function handleCopy() {
-    clipboard.copy(tateTweet);
-  }
-
   const [lineSpacing, setLineSpacing] = useState('full');
-
   const [tweet, setTweet] = useState('');
   const [tateTweet] = useDebouncedValue(
     conv2TateTweet(tweet, lineSpacing as 'none' | 'half' | 'full'),
@@ -48,6 +41,9 @@ function MainView(): JSX.Element {
     setNoOfCharOfTweet(getCharLength(tweet));
     setNoOfCharOfTateTweet(getCharLength(tateTweet));
   }, [tateTweet, lineSpacing]);
+
+  const handleClear = () => setTweet('');
+  const handleCopy = () => clipboard.copy(tateTweet);
 
   return (
     <>
@@ -65,6 +61,13 @@ function MainView(): JSX.Element {
         autosize={true}
       />
       <Text size='sm'>全角{noOfCharOfTweet}文字</Text>
+      <Button
+        variant='gradient'
+        gradient={{ from: 'orange', to: 'pink' }}
+        onClick={handleClear}
+      >
+        消去
+      </Button>
       <Space h='md' />
       <RadioGroup
         value={lineSpacing}
