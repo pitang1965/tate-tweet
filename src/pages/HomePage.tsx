@@ -26,7 +26,7 @@ const useStyles = createStyles((/* theme, _params, getRef */) => ({
   },
 }));
 
-function MainView(): JSX.Element {
+function HomePage(): JSX.Element {
   const { classes } = useStyles();
   const clipboard = useClipboard({ timeout: 500 });
   const [lineSpacing, setLineSpacing] = useState('full');
@@ -154,4 +154,4 @@ function MainView(): JSX.Element {
   );
 }
 
-export default MainView;
+export default HomePage;

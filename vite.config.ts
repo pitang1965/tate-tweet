@@ -8,7 +8,9 @@ export default defineConfig({
     react(),
     VitePWA({
       includeAssets: [
+        'index.html',
         'offline.html',
+        'pitang_with_brids.jpg',
         'favicon.svg',
         'favicon.ico',
         'robots.txt',
