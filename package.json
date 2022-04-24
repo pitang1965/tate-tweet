@@ -9,9 +9,7 @@
   },
   "dependencies": {
     "@mantine/core": "^4.1.4",
-    "@mantine/form": "^4.1.4",
     "@mantine/hooks": "^4.1.4",
-    "@mantine/notifications": "^4.1.4",
     "grapheme-splitter": "^1.0.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
