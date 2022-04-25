@@ -32,3 +32,5 @@
 * 「びーと」と読みます。
 * 本アプリでは、ViteによりReactとJavaScriptを用いたプロジェクトを生成しています。
 * esbuildを使用して高速で快適な開発をおこない、プロダクションではRollupでバンドルします。
+### [Vite Plugin PWA](https://vite-plugin-pwa.netlify.app/)
+* Viteのためのフレームワークを問わないPWAプラグイン。
