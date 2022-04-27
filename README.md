@@ -24,6 +24,8 @@
 * クライアント及びサーバーサイドのルーティングのReact用ライブラリ。
 ### [tabler-icons-react](https://github.com/konradkalemba/tabler-icons-react#tabler-icons-react)
 * [Tabler Icons](https://tabler-icons-react.vercel.app/)のためのReactコンポーネント。
+### [TypeScript](https://www.typescriptlang.org/)
+* 型の構文を備えたJavaScript。
 ### [Twitter](https://developer.twitter.com/en)
 * 本アプリでは、ツイートするためのログインやAPIの使用はありません。
 * ブログ記事「[コードからツイートする方法](https://software.pitang1965.com/2022/04/22/how-to-tweet-from-the-code/)」
