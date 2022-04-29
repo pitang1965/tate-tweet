@@ -1050,26 +1050,26 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mantine/core@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-4.1.5.tgz#bd4931b88c58b6aadc6bd7d124900c8f0fbe7168"
-  integrity sha512-YzhzIAUDqIgseAQn9hxlIPqbWcFWZ20ZHY5lBFglqj/MLQf1uC3cp4pFHQJNv3FjtrRX0vL6XVNRoW4EThBoaA==
+"@mantine/core@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-4.2.1.tgz#cd93bc0c1c9ac8c25327867dec7d977790297f3c"
+  integrity sha512-YEz0SG8HN+H1s/gpqEzSUUFPXdaMQnZgJPO8JTOgX/qlVvggw+Y8TaLby4A+4kgQdGiXTWxr1Njx1/u72Fa1KA==
   dependencies:
-    "@mantine/styles" "4.1.5"
+    "@mantine/styles" "4.2.1"
     "@popperjs/core" "^2.9.3"
     "@radix-ui/react-scroll-area" "^0.1.1"
     react-popper "^2.2.5"
     react-textarea-autosize "^8.3.2"
 
-"@mantine/hooks@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.1.5.tgz#75576e15b26b6e71037816d140083ce5bdb1daf2"
-  integrity sha512-6zkVaxBT4ajDO3gt5vx388bnSM5eCiIB/EDJaqobeuwt8S2OkxTDCeDtHpNdSczkNVfoShoUzmb8IBtBF4D9Gw==
+"@mantine/hooks@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.2.1.tgz#60960c24debaf6c0bd2e51f84ac28abecec534b8"
+  integrity sha512-+sg8aBK1IzCLGrtL2PEUp1q2/3blUvxJPoqIE6wwcvtIc7cFYfPWRdFFRtkwJjHQ+KlH6TvCO0Yl7F6FBq7+Rw==
 
-"@mantine/styles@4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-4.1.5.tgz#ba65a00623fc1a7abb462988b6fbd1eed5e31085"
-  integrity sha512-eNN2q2iHk5lQA1N9Y7056Y7zXg22jIo6q7Xn1webBPLi9P98sT/Pabm3k8OWzx0Bor89Ey7Voi5RWCgPnpw45Q==
+"@mantine/styles@4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-4.2.1.tgz#a4d1a8373c59c07fb1ec0e6d43d5b288a5abbbc7"
+  integrity sha512-KHQDCFh4tOBYjKZ7Y5f7qhVXQDKDAhuQz2jJeSE9rUrUaXtJJaAvlrV884AD2vx58k2UUKpAAaBt8CaT1VAXgw==
   dependencies:
     "@emotion/cache" "^11.7.1"
     "@emotion/react" "^11.7.1"
@@ -1269,10 +1269,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-dom@^18.0.2":
-  version "18.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.2.tgz#2d6b46557aa30257e87e67a6d952146d15979d79"
-  integrity sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==
+"@types/react-dom@^18.0.3":
+  version "18.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.3.tgz#a022ea08c75a476fe5e96b675c3e673363853831"
+  integrity sha512-1RRW9kst+67gveJRYPxGmVy8eVJ05O43hg77G2j5m76/RFJtMbcfAs2viQ2UNsvvDg8F7OfQZx8qQcl6ymygaQ==
   dependencies:
     "@types/react" "*"
 
@@ -2712,10 +2712,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tabler-icons-react@^1.46.0:
-  version "1.46.0"
-  resolved "https://registry.yarnpkg.com/tabler-icons-react/-/tabler-icons-react-1.46.0.tgz#957215030bd5ce0ce2d2a93ed5e52b85f5ff95f7"
-  integrity sha512-tQt686DPfGRXxdCMg63gEO7KP1mcmx0JvzgAq5HKkD3ts9HSL9AAaGAGpa/IJdD0tLaoviegdpv6MOp8DsAr9Q==
+tabler-icons-react@^1.47.0:
+  version "1.47.0"
+  resolved "https://registry.yarnpkg.com/tabler-icons-react/-/tabler-icons-react-1.47.0.tgz#0f66735139b066fe54b426937085b6216dc1c7ee"
+  integrity sha512-XeVNNlccDC26nqZNtG3zpMOnhB+gecJCSUiYLxFqFUYnC5TIN3ClO1k6f9b26d+kzH+Z326la/3lMYjQ+xSvKg==
 
 temp-dir@^2.0.0:
   version "2.0.0"
@@ -2766,10 +2766,10 @@ type-fest@^0.16.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.16.0.tgz#3240b891a78b0deae910dbeb86553e552a148860"
   integrity sha512-eaBzG6MxNzEn9kiwvtre90cXaNLkmadMWa1zQMs3XORCXNbsH/OewwbxC5ia9dCxIxnTAsSxXJaa/p5y8DlvJg==
 
-typescript@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
-  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
+typescript@^4.6.4:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 unbox-primitive@^1.0.1:
   version "1.0.2"
