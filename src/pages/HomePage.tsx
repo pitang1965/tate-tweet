@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
 import { AlertCircle, BrandTwitter } from 'tabler-icons-react';
-import { conv2TateTweet, getCharLength } from '../lib/convTweet';
+import { conv2TateTweet, getCharLength, getNoOfLines } from '../lib/convTweet';
 
 const useStyles = createStyles((/* theme, _params, getRef */) => ({
   textarea: {
@@ -26,6 +26,24 @@ const useStyles = createStyles((/* theme, _params, getRef */) => ({
   },
 }));
 
+const formatNumberToString = (val: number) => {
+  let str: string;
+
+  if (val < 10) {
+    str = '　' + String(val);
+  } else if (val < 100) {
+    str = str = ' ' + String(val);
+  } else {
+    str = String(val);
+  }
+
+  if (Math.ceil(val) === val) {
+    str = str + '.0';
+  }
+
+  return str;
+};
+
 function HomePage(): JSX.Element {
   const { classes } = useStyles();
   const clipboard = useClipboard({ timeout: 500 });
@@ -37,6 +55,26 @@ function HomePage(): JSX.Element {
   );
   const [noOfCharOfTweet, setNoOfCharOfTweet] = useState(0);
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
+  const [noOfLinesAfterConversion, setNoofLinesAfterConversion] = useState(0);
+
+  useEffect(() => {
+    const noOfLinesOfTweet = getNoOfLines(tweet);
+    let finalValue;
+    switch (lineSpacing) {
+      case 'none':
+        finalValue = noOfLinesOfTweet;
+        break;
+      case 'half':
+        finalValue = noOfLinesOfTweet + (+noOfLinesOfTweet - 1) / 2;
+        break;
+      case 'full':
+        finalValue = noOfLinesOfTweet + noOfLinesOfTweet - 1;
+        break;
+      default:
+        finalValue = noOfLinesOfTweet;
+    }
+    setNoofLinesAfterConversion(finalValue);
+  }, [tweet, lineSpacing]);
 
   useEffect(() => {
     setNoOfCharOfTweet(getCharLength(tweet));
@@ -62,10 +100,12 @@ function HomePage(): JSX.Element {
         autosize={true}
       />
       <div className={classes.buttons}>
-        <Text size='sm'>全角{noOfCharOfTweet}文字</Text>
+        <Text size='sm'>全角：{formatNumberToString(noOfCharOfTweet)}文字</Text>
+        <Text size='sm'>変換後行数[全角]：{formatNumberToString(noOfLinesAfterConversion)}</Text>
         <Button
           variant='gradient'
           gradient={{ from: 'orange', to: 'pink' }}
+          size='sm'
           onClick={handleClear}
         >
           消去
@@ -98,11 +138,12 @@ function HomePage(): JSX.Element {
 
       <div className={classes.buttons}>
         <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
-          全角{noOfCharOfTateTweet}文字
+          全角：{formatNumberToString(noOfCharOfTateTweet)}文字
         </Text>
         <Button
           variant='gradient'
           gradient={{ from: 'purple', to: 'pink' }}
+          size='sm'
           onClick={handleCopy}
         >
           コピー
@@ -115,6 +156,7 @@ function HomePage(): JSX.Element {
             tateTweet
           )}`}
           leftIcon={<BrandTwitter size={18} />}
+          size='sm'
           styles={(theme) => ({
             root: {
               backgroundColor: '#00acee',

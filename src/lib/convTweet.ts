@@ -113,3 +113,6 @@ export const conv2TateTweet = (
 
   return finalString;
 };
+
+// 文字列の行数を返す
+export const getNoOfLines = (text: string): number => text.split(/\r\n|\r|\n/).length;
