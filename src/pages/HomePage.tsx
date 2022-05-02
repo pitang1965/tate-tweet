@@ -109,10 +109,10 @@ function HomePage(): JSX.Element {
         >
           消去
         </Button>
-        <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
+        <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'black'}>
           変換後文字数：{formatNumberToString(noOfCharOfTateTweet)}[全角]
         </Text>
-        <Text size='sm' color={noOfLinesAfterConversion > 15 ? 'red' : 'blue'}>
+        <Text size='sm' color={noOfLinesAfterConversion > 15 ? 'red' : 'black'}>
           変換後行数[全角]：{formatNumberToString(noOfLinesAfterConversion)}
         </Text>
       </div>

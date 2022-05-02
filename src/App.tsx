@@ -63,6 +63,7 @@ function App(): JSX.Element {
                   size='sm'
                   color={theme.colors.gray[6]}
                   mr='xl'
+                  title='メニューを開く'
                 />
               </MediaQuery>
               {title}
