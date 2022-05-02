@@ -53,7 +53,6 @@ function HomePage(): JSX.Element {
     conv2TateTweet(tweet, lineSpacing as 'none' | 'half' | 'full'),
     200
   );
-  const [noOfCharOfTweet, setNoOfCharOfTweet] = useState(0);
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
   const [noOfLinesAfterConversion, setNoofLinesAfterConversion] = useState(0);
 
@@ -77,7 +76,6 @@ function HomePage(): JSX.Element {
   }, [tweet, lineSpacing]);
 
   useEffect(() => {
-    setNoOfCharOfTweet(getCharLength(tweet));
     setNoOfCharOfTateTweet(getCharLength(tateTweet));
   }, [tateTweet, lineSpacing]);
 
@@ -86,10 +84,13 @@ function HomePage(): JSX.Element {
 
   return (
     <>
-      <p>ツイートを縦書きに変換します。</p>
+      <Text size='sm'>
+        １つ目のテキストエリアに入力したものが２つ目に縦書きで表示されます。
+      </Text>
+      <Space h='md' />
       <Textarea
         placeholder='文章を入力してください。'
-        label='ツイートを入力'
+        label=''
         radius='xs'
         size='lg'
         required
@@ -100,8 +101,6 @@ function HomePage(): JSX.Element {
         autosize={true}
       />
       <div className={classes.buttons}>
-        <Text size='sm'>全角：{formatNumberToString(noOfCharOfTweet)}文字</Text>
-        <Text size='sm'>変換後行数[全角]：{formatNumberToString(noOfLinesAfterConversion)}</Text>
         <Button
           variant='gradient'
           gradient={{ from: 'orange', to: 'pink' }}
@@ -110,8 +109,47 @@ function HomePage(): JSX.Element {
         >
           消去
         </Button>
+        <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
+          変換後文字数：{formatNumberToString(noOfCharOfTateTweet)}[全角]
+        </Text>
+        <Text size='sm' color={noOfLinesAfterConversion > 15 ? 'red' : 'blue'}>
+          変換後行数[全角]：{formatNumberToString(noOfLinesAfterConversion)}
+        </Text>
       </div>
-
+      <Space h='md' />
+      {noOfCharOfTateTweet > 140 ? (
+        <Alert
+          icon={<AlertCircle size={16} />}
+          title='文字数オーバー!'
+          color='red'
+          radius='md'
+          variant='filled'
+        >
+          ツイートは全角140文字までです。
+          {lineSpacing !== 'none'
+            ? '行間を変更するか、改行位置を調整するか、ツイートを短くしてください。'
+            : '改行位置を調整するか、ツイートを短くしてください'}
+        </Alert>
+      ) : (
+        ''
+      )}
+      <Space h='md' />
+      {noOfLinesAfterConversion > 15 ? (
+        <Alert
+          icon={<AlertCircle size={16} />}
+          title='行数が多いです。'
+          color='pink'
+          radius='md'
+          variant='filled'
+        >
+          ツイートの1行の文字数は、端末の種類、向き、アプリ、フォントサイズの設定などで変わってきます。例えば一部機種では全角15文字を超えると折り返すので縦書きの文章は意味不明になります。
+          {lineSpacing !== 'none'
+            ? '行間を変更するか、改行位置を調整するか、ツイートを短くしてください。'
+            : '改行位置を調整するか、ツイートを短くしてください'}
+        </Alert>
+      ) : (
+        ''
+      )}
       <RadioGroup
         value={lineSpacing}
         label='行間'
@@ -127,7 +165,7 @@ function HomePage(): JSX.Element {
       <Space h='md' />
       <Textarea
         placeholder='縦書きで表示されます'
-        label='縦書きツイート'
+        label=''
         radius='xs'
         size='lg'
         value={tateTweet}
@@ -137,9 +175,6 @@ function HomePage(): JSX.Element {
       />
 
       <div className={classes.buttons}>
-        <Text size='sm' color={noOfCharOfTateTweet > 140 ? 'red' : 'blue'}>
-          全角：{formatNumberToString(noOfCharOfTateTweet)}文字
-        </Text>
         <Button
           variant='gradient'
           gradient={{ from: 'purple', to: 'pink' }}
@@ -174,24 +209,6 @@ function HomePage(): JSX.Element {
           Twitterに飛ぶ
         </Button>
       </div>
-
-      <Space h='md' />
-      {noOfCharOfTateTweet > 140 ? (
-        <Alert
-          icon={<AlertCircle size={16} />}
-          title='文字数オーバー!'
-          color='red'
-          radius='md'
-          variant='filled'
-        >
-          ツイートは全角140文字までです。
-          {lineSpacing !== 'none'
-            ? '行間を変更するか、改行位置を調整するか、ツイートを短くしてください。'
-            : '改行位置を調整するか、ツイートを短くしてください'}
-        </Alert>
-      ) : (
-        ''
-      )}
     </>
   );
 }
