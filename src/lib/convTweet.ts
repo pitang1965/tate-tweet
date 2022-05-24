@@ -9,8 +9,7 @@ const reverseString = (text: string) => text.split('').reverse().join('');
 const isSpeceCharacter = (str: string) => str[0] === ' ' || str[0] === '　';
 
 // 文字が改行文字かどうか
-const isNewLineCharacter = (str: string) =>
-  str[0] === '\r' || str[0] === '\n';
+const isNewLineCharacter = (str: string) => str[0] === '\r' || str[0] === '\n';
 
 // 文字が半角かどうか
 const isHalfWidthChar = (str: string) => /^[\x20-\x7e]*$/.test(str[0]);
@@ -21,7 +20,10 @@ const isHalfWidthChar = (str: string) => /^[\x20-\x7e]*$/.test(str[0]);
 
 // 半角を全角に変換
 const halfToFullWidthCharacters = (text: string) =>
-  text.replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0)).replace(/[-－﹣−‐⁃‑‒–—﹘―⎯⏤ーｰ─━～]/g, '｜');
+  text
+    .replace(/[ ]/g, '　')
+    .replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0))
+    .replace(/[-－﹣−‐⁃‑‒–—﹘―⎯⏤ーｰ─━～]/g, '｜');
 
 // 文字数カウントのルール
 // 改行と半角は0.5、全角と絵文字は1
@@ -40,7 +42,7 @@ export const getCharLength = (str: string): number => {
 
 export const conv2TateTweet = (
   str: string,
-  lineSpacing:'none' | 'half' | 'full' = 'full'
+  lineSpacing: 'none' | 'half' | 'full' = 'full'
 ) => {
   let stringArray: string[][] = [];
 
@@ -115,4 +117,5 @@ export const conv2TateTweet = (
 };
 
 // 文字列の行数を返す
-export const getNoOfLines = (text: string): number => text.split(/\r\n|\r|\n/).length;
+export const getNoOfLines = (text: string): number =>
+  text.split(/\r\n|\r|\n/).length;
