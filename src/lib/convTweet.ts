@@ -77,7 +77,7 @@ export const conv2TateTweet = (
     }
     return spaceAddedArray;
   });
-  console.table(spaceAddedStringArray);
+  // console.table(spaceAddedStringArray);
 
   // 縦書きに変換
   let tateString: string = '';
