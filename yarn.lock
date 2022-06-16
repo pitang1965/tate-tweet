@@ -1352,10 +1352,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@18.0.12":
-  version "18.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
-  integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
+"@types/react@18.0.13":
+  version "18.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.13.tgz#0f5bd24a5f26593e04e450fe85ff43f51c1524ff"
+  integrity sha512-psqptIYQxGUFuGYwP3KCFVtPTkMpIcrqFmtKblWEUQhLuYLpHBwJkXhjp6eHfDM5IbyskY4x7qQpLedEsPkHlA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -2701,10 +2701,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tabler-icons-react@^1.48.1:
-  version "1.48.1"
-  resolved "https://registry.yarnpkg.com/tabler-icons-react/-/tabler-icons-react-1.48.1.tgz#edf4718e7b444a79e33c261f735c639011b2b4eb"
-  integrity sha512-TX12VEymcICeHOUd0f086JgMZhwogol36aTbEZBe4KnvHIjr7TyHFUUKkqydgPwjdJPEA+6Y1XOglJ9IGKVC5Q==
+tabler-icons-react@^1.49.0:
+  version "1.49.0"
+  resolved "https://registry.yarnpkg.com/tabler-icons-react/-/tabler-icons-react-1.49.0.tgz#9f01283fa9422e8946ccc9c43b402b364f7666e8"
+  integrity sha512-e6gWcqN2WNN9MZE04uA1t9/u7+GzEZnIPB2grGOtJnFrU+FkJ0mV5ezcUQx/HIypoePmzlp8c9uEB1Kfg68UgQ==
 
 temp-dir@^2.0.0:
   version "2.0.0"
