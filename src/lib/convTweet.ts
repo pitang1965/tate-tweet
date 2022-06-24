@@ -119,3 +119,22 @@ export const conv2TateTweet = (
 // 文字列の行数を返す
 export const getNoOfLines = (text: string): number =>
   text.split(/\r\n|\r|\n/).length;
+
+if (import.meta.vitest) {
+  const { describe, expect, it } = import.meta.vitest;
+  describe('縦書き変換', () => {
+    it('文字列の行数を返す', () => {
+      const text = `123 456
+      abc
+      xyz`;
+
+      expect(getNoOfLines(text)).toBe(3);
+    });
+
+    it('文字列を反転する', () => {
+      const str1 = '123456789';
+      const str2 = '987654321';
+      expect(reverseString(str1)).toBe(str2);
+    });
+  });
+}
