@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   createStyles,
   Alert,
@@ -47,8 +47,13 @@ const formatNumberToString = (val: number) => {
 function HomePage(): JSX.Element {
   const { classes } = useStyles();
   const clipboard = useClipboard({ timeout: 500 });
+
   const [lineSpacing, setLineSpacing] = useState('full');
+  const [prevLineSpacing, setPrevLineSpacing] = useState('full');
+
   const [tweet, setTweet] = useState('');
+  const [prevTweet, setPrevTweet] = useState('');
+
   const [tateTweet] = useDebouncedValue(
     conv2TateTweet(tweet, lineSpacing as 'none' | 'half' | 'full'),
     200
@@ -56,7 +61,7 @@ function HomePage(): JSX.Element {
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
   const [noOfLinesAfterConversion, setNoofLinesAfterConversion] = useState(0);
 
-  useEffect(() => {
+  if (prevLineSpacing !== lineSpacing || tweet !== prevTweet) {
     const noOfLinesOfTweet = getNoOfLines(tweet);
     let finalValue;
     switch (lineSpacing) {
@@ -73,11 +78,11 @@ function HomePage(): JSX.Element {
         finalValue = noOfLinesOfTweet;
     }
     setNoofLinesAfterConversion(finalValue);
-  }, [tweet, lineSpacing]);
-
-  useEffect(() => {
     setNoOfCharOfTateTweet(getCharLength(tateTweet));
-  }, [tateTweet, lineSpacing]);
+
+    setPrevLineSpacing(lineSpacing);
+    setPrevTweet(tweet);
+  }
 
   const handleClear = () => setTweet('');
   const handleCopy = () => clipboard.copy(tateTweet);
