@@ -3,7 +3,6 @@ import {
   createStyles,
   Alert,
   Button,
-  RadioGroup,
   Radio,
   Space,
   Text,
@@ -155,7 +154,7 @@ function HomePage(): JSX.Element {
       ) : (
         ''
       )}
-      <RadioGroup
+      <Radio.Group
         value={lineSpacing}
         label='行間'
         description='縦書きしたときの行間を設定します。'
@@ -166,7 +165,7 @@ function HomePage(): JSX.Element {
         <Radio value='full' label='全角' />
         <Radio value='half' label='半角' />
         <Radio value='none' label='なし' />
-      </RadioGroup>
+      </Radio.Group>
       <Space h='md' />
       <Textarea
         placeholder='縦書きで表示されます'
