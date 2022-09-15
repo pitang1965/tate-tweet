@@ -10,23 +10,23 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.0",
-    "@mantine/core": "^5.0.2",
-    "@mantine/hooks": "^5.0.2",
+    "@emotion/react": "^11.10.4",
+    "@mantine/core": "^5.3.1",
+    "@mantine/hooks": "^5.3.1",
     "grapheme-splitter": "^1.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.4.0",
     "tabler-icons-react": "^1.54.0"
   },
   "devDependencies": {
-    "@types/react": "18.0.15",
+    "@types/react": "18.0.20",
     "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.0",
+    "@vitejs/plugin-react": "^2.1.0",
     "c8": "^7.12.0",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.4",
-    "vite-plugin-pwa": "^0.12.3",
-    "vitest": "^0.20.2"
+    "typescript": "^4.8.3",
+    "vite": "^3.1.1",
+    "vite-plugin-pwa": "^0.12.7",
+    "vitest": "^0.23.2"
   }
 }
