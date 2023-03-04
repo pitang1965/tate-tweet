@@ -3,6 +3,7 @@ import {
   createStyles,
   Alert,
   Button,
+  Group,
   Radio,
   Space,
   Text,
@@ -158,13 +159,14 @@ function HomePage(): JSX.Element {
         value={lineSpacing}
         label='行間'
         description='縦書きしたときの行間を設定します。'
-        spacing='xl'
         color='grape'
         onChange={setLineSpacing}
       >
-        <Radio value='full' label='全角' />
-        <Radio value='half' label='半角' />
-        <Radio value='none' label='なし' />
+        <Group mt='xl'>
+          <Radio value='full' label='全角' />
+          <Radio value='half' label='半角' />
+          <Radio value='none' label='なし' />
+        </Group>
       </Radio.Group>
       <Space h='md' />
       <Textarea
