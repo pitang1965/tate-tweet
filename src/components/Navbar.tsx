@@ -1,49 +1,30 @@
 import type { FC } from 'react';
-import { createStyles, Anchor, Navbar as MantineNavbar } from '@mantine/core';
+import { Anchor, AppShell } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { BrandTwitter, InfoCircle } from 'tabler-icons-react';
-
-const useStyles = createStyles((theme /*, _params, getRef */) => ({
-  anchor: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '0.5rem',
-    textDecoration: 'none',
-    '&:hover': {
-      color: theme.fn.darken('#00acee', 0.7),
-      textDecoration: 'none',
-    },
-  },
-}));
+import styles from './Navbar.module.css';
 
 type NavbarProps = {
   opened: boolean;
 };
 
 const Navbar: FC<NavbarProps> = ({ opened }) => {
-  const { classes } = useStyles();
-
   return (
     <>
-      <MantineNavbar
-        p='md'
-        hiddenBreakpoint='sm'
-        hidden={!opened}
-        width={{ sm: 200, lg: 300 }}
-      >
-        <MantineNavbar.Section mt='xs'>
-          <Anchor component={Link} to='/' className={classes.anchor}>
+      <AppShell.Navbar p='md' hidden={!opened}>
+        <AppShell.Section mt='xs'>
+          <Anchor component={Link} to='/' className={styles.anchor}>
             <BrandTwitter />
             <div>Tweet</div>
           </Anchor>
-        </MantineNavbar.Section>
-        <MantineNavbar.Section mt='xs'>
-          <Anchor component={Link} to='about' className={classes.anchor}>
+        </AppShell.Section>
+        <AppShell.Section mt='xs'>
+          <Anchor component={Link} to='about' className={styles.anchor}>
             <InfoCircle />
             <div>About</div>
           </Anchor>
-        </MantineNavbar.Section>
-      </MantineNavbar>
+        </AppShell.Section>
+      </AppShell.Navbar>
     </>
   );
 };

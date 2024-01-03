@@ -1,0 +1,10 @@
+.textarea {
+  width: 31em;
+  max-width: 90%;
+}
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}

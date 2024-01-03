@@ -1,0 +1,10 @@
+.anchor {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  text-decoration: none;
+  &:hover {
+    color: #0077cc;
+    text-decoration: none;
+  }
+};

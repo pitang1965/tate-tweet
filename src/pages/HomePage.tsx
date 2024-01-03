@@ -1,30 +1,19 @@
 import { useState } from 'react';
 import {
-  createStyles,
   Alert,
   Button,
+  darken,
   Group,
   Radio,
   Space,
   Text,
   Textarea,
+  useMantineTheme
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
 import { AlertCircle, BrandTwitter } from 'tabler-icons-react';
 import { conv2TateTweet, getCharLength, getNoOfLines } from '../lib/convTweet';
-
-const useStyles = createStyles((/* theme, _params, getRef */) => ({
-  textarea: {
-    width: '31em',
-    maxWidth: '90%',
-  },
-  buttons: {
-    display: 'flex',
-    gap: '1rem',
-    alignItems: 'center',
-    marginTop: '0.5rem',
-  },
-}));
+import styles from './HomePage.module.css';
 
 const formatNumberToString = (val: number) => {
   let str: string;
@@ -45,7 +34,6 @@ const formatNumberToString = (val: number) => {
 };
 
 function HomePage(): JSX.Element {
-  const { classes } = useStyles();
   const clipboard = useClipboard({ timeout: 500 });
 
   const [lineSpacing, setLineSpacing] = useState('full');
@@ -59,7 +47,7 @@ function HomePage(): JSX.Element {
     200
   );
   const [noOfCharOfTateTweet, setNoOfCharOfTateTweet] = useState(0);
-  const [noOfLinesAfterConversion, setNoofLinesAfterConversion] = useState(0);
+  const [noOfLinesAfterConversion, setNoOfLinesAfterConversion] = useState(0);
 
   if (prevLineSpacing !== lineSpacing || tweet !== prevTweet) {
     const noOfLinesOfTweet = getNoOfLines(tweet);
@@ -77,18 +65,22 @@ function HomePage(): JSX.Element {
       default:
         finalValue = noOfLinesOfTweet;
     }
-    setNoofLinesAfterConversion(finalValue);
+    setNoOfLinesAfterConversion(finalValue);
     setNoOfCharOfTateTweet(getCharLength(tateTweet));
 
     setPrevLineSpacing(lineSpacing);
     setPrevTweet(tweet);
   }
 
+  const theme = useMantineTheme();
+
   const handleClear = () => setTweet('');
   const handleCopy = () => clipboard.copy(tateTweet);
 
   return (
-    <>
+    <div style={{ 
+      background: theme.colors.gray[0],
+     }}>
       <Text size='sm'>
         １つ目のテキストエリアに入力したものが２つ目に縦書きで表示されます。
       </Text>
@@ -101,11 +93,11 @@ function HomePage(): JSX.Element {
         required
         value={tweet}
         onChange={(event) => setTweet(event.currentTarget.value)}
-        className={classes.textarea}
+        className={styles.textarea}
         minRows={6}
         autosize={true}
       />
-      <div className={classes.buttons}>
+      <div className={styles.buttons}>
         <Button
           variant='gradient'
           gradient={{ from: 'orange', to: 'pink' }}
@@ -175,12 +167,12 @@ function HomePage(): JSX.Element {
         radius='xs'
         size='lg'
         value={tateTweet}
-        className={classes.textarea}
+        className={styles.textarea}
         minRows={12}
         autosize={true}
       />
 
-      <div className={classes.buttons}>
+      <div className={styles.buttons}>
         <Button
           variant='gradient'
           gradient={{ from: 'purple', to: 'pink' }}
@@ -196,7 +188,7 @@ function HomePage(): JSX.Element {
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
             tateTweet
           )}`}
-          leftIcon={<BrandTwitter size={18} />}
+          leftSection={<BrandTwitter size={18} />}
           size='sm'
           styles={(theme) => ({
             root: {
@@ -204,7 +196,7 @@ function HomePage(): JSX.Element {
               paddingRight: 20,
 
               '&:hover': {
-                backgroundColor: theme.fn.darken('#00acee', 0.05),
+                backgroundColor: darken('#00acee', 0.05),
               },
             },
             leftIcon: {
@@ -215,7 +207,7 @@ function HomePage(): JSX.Element {
           Twitterに飛ぶ
         </Button>
       </div>
-    </>
+    </div>
   );
 }
 

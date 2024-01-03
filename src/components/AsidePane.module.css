@@ -1,0 +1,18 @@
+.hideOnSmall {
+  @media (max-width: 768px) { /* 'md'ブレークポイントの幅に合わせて調整 */
+    display: none;
+  }
+}
+
+.asideContainer {
+  overflow-y: auto; /* 縦方向のスクロールを有効にする */
+
+    /* スクロールバーを非表示にする */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+    /* Chrome, Safari, Opera */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+}
