@@ -10,27 +10,27 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@mantine/core": "^7.3.2",
-    "@mantine/hooks": "^7.3.2",
+    "@emotion/react": "^11.11.4",
+    "@mantine/core": "^7.7.1",
+    "@mantine/hooks": "^7.7.1",
     "grapheme-splitter": "^1.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1",
+    "react-router-dom": "^6.22.3",
     "tabler-icons-react": "^1.56.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.46",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-c8": "^0.32.2",
-    "c8": "^8.0.1",
-    "postcss": "^8.4.32",
-    "postcss-preset-mantine": "^1.12.3",
+    "c8": "^9.1.0",
+    "postcss": "^8.4.38",
+    "postcss-preset-mantine": "^1.13.0",
     "postcss-simple-vars": "^7.0.1",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10",
-    "vite-plugin-pwa": "^0.17.4",
-    "vitest": "^1.1.1"
+    "typescript": "^5.4.4",
+    "vite": "^5.2.8",
+    "vite-plugin-pwa": "^0.19.8",
+    "vitest": "^1.4.0"
   }
 }
