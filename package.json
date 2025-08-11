@@ -7,7 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "format": "prettier --write src/**/*.{ts,tsx,js,jsx,json,css,md}",
+    "format:check": "prettier --check src/**/*.{ts,tsx,js,jsx,json,css,md}"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -27,6 +29,7 @@
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "vite": "^7.1.1",
     "vite-plugin-pwa": "^1.0.2",

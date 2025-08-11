@@ -11,15 +11,15 @@ type NavbarProps = {
 const Navbar: FC<NavbarProps> = ({ opened }) => {
   return (
     <>
-      <AppShell.Navbar p='md' hidden={!opened}>
-        <AppShell.Section mt='xs'>
-          <Anchor component={Link} to='/' className={styles.anchor}>
+      <AppShell.Navbar p="md" hidden={!opened}>
+        <AppShell.Section mt="xs">
+          <Anchor component={Link} to="/" className={styles.anchor}>
             <BrandTwitter />
             <div>Tweet</div>
           </Anchor>
         </AppShell.Section>
-        <AppShell.Section mt='xs'>
-          <Anchor component={Link} to='about' className={styles.anchor}>
+        <AppShell.Section mt="xs">
+          <Anchor component={Link} to="about" className={styles.anchor}>
             <InfoCircle />
             <div>About</div>
           </Anchor>

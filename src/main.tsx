@@ -8,7 +8,7 @@ const root = createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
     <MantineProvider
-      defaultColorScheme='light'
+      defaultColorScheme="light"
       theme={{
         fontFamily:
           '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',

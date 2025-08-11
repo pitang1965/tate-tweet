@@ -33,7 +33,7 @@ function App() {
         footer={{
           height: 60,
         }}
-        padding='md'
+        padding="md"
       >
         <Navbar opened={opened} />
         <AsidePane />
@@ -41,9 +41,9 @@ function App() {
         <Footer />
         <AppShell.Main>
           <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/about' element={<AboutPage />} />
-            <Route path='*' element={<NotFoundPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AppShell.Main>
       </AppShell>

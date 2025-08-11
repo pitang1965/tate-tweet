@@ -13,7 +13,7 @@ const Header: FC<HeaderProps> = ({ opened, setOpened }) => {
   const theme = useMantineTheme();
   return (
     <>
-      <AppShell.Header p='md'>
+      <AppShell.Header p="md">
         <div
           style={{
             display: 'flex',
@@ -24,10 +24,10 @@ const Header: FC<HeaderProps> = ({ opened, setOpened }) => {
           <Burger
             opened={opened}
             onClick={() => setOpened(!opened)}
-            size='sm'
+            size="sm"
             color={theme.colors.gray[6]}
-            mr='xl'
-            title='メニューを開く'
+            mr="xl"
+            title="メニューを開く"
             className={styles.burgerVisible}
           />
           {title}
