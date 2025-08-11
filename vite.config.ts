@@ -8,7 +8,7 @@ export default defineConfig(({ command, mode }) => {
       'import.meta.vitest': mode !== 'production' ,
     },
     test: {
-      includeSource: ['src/**/*.{ts, tsx}'],
+      includeSource: ['src/**/*.{ts,tsx}'],
       coverage: {
         reporter: ['text', 'json', 'html'],
       },

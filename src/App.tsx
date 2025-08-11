@@ -12,7 +12,7 @@ import AsidePane from './components/AsidePane';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-function App(): JSX.Element {
+function App() {
   const [opened, setOpened] = useState(false);
 
   return (

@@ -33,7 +33,7 @@ const formatNumberToString = (val: number) => {
   return str;
 };
 
-function HomePage(): JSX.Element {
+function HomePage() {
   const clipboard = useClipboard({ timeout: 500 });
 
   const [lineSpacing, setLineSpacing] = useState('full');
