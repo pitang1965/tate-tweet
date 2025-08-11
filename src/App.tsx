@@ -8,7 +8,6 @@ import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import Navbar from './components/Navbar';
-import AsidePane from './components/AsidePane';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -23,10 +22,6 @@ function App() {
           breakpoint: 'sm',
           collapsed: { mobile: !opened },
         }}
-        aside={{
-          width: { sm: 200, lg: 300 },
-          breakpoint: 'sm',
-        }}
         header={{
           height: 70,
         }}
@@ -36,7 +31,6 @@ function App() {
         padding="md"
       >
         <Navbar opened={opened} />
-        <AsidePane />
         <Header opened={opened} setOpened={setOpened} />
         <Footer />
         <AppShell.Main>
