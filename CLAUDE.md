@@ -8,11 +8,11 @@ This is "tate-tweet" (縦書きツイート) - a Japanese vertical text conversi
 
 ## Development Commands
 
-- `yarn dev` - Start development server
-- `yarn build` - Build for production (runs TypeScript compiler then Vite build)
-- `yarn preview` - Preview production build
-- `yarn test` - Run tests with Vitest
-- `yarn coverage` - Generate test coverage report
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production (runs TypeScript compiler then Vite build)
+- `pnpm preview` - Preview production build
+- `pnpm test` - Run tests with Vitest
+- `pnpm coverage` - Generate test coverage report
 
 ## Architecture
 
