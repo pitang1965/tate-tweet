@@ -2,12 +2,15 @@ import { useState } from 'react';
 import {
   Alert,
   Button,
+  Card,
   darken,
   Group,
+  List,
   Radio,
   Space,
   Text,
   Textarea,
+  Title,
   useMantineTheme,
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
@@ -207,9 +210,97 @@ function HomePage() {
             },
           })}
         >
-          Twitterに飛ぶ
+          Xに飛ぶ
         </Button>
       </div>
+
+      <Space h="xl" />
+      
+      {/* 使い方説明セクション */}
+      <Card shadow="sm" padding="lg" radius="md" withBorder>
+        <Title order={3} mb="md">
+          使い方
+        </Title>
+        <List spacing="sm">
+          <List.Item>
+            <Text>
+              <strong>テキスト入力：</strong>
+              上のテキストエリアに横書きの日本語テキストを入力してください
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>行間設定：</strong>
+              「なし」「半角」「全角」から行間の種類を選択できます
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>変換確認：</strong>
+              リアルタイムで縦書きに変換された結果が下に表示されます
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>コピー・投稿：</strong>
+              「コピー」ボタンでクリップボードにコピー、または「Xに飛ぶ」ボタンで直接X(旧Twitter)の投稿画面に移動できます
+            </Text>
+          </List.Item>
+        </List>
+        <Space h="sm" />
+        <Alert variant="light" color="blue" icon={<AlertCircle size={16} />}>
+          <Text size="sm">
+            文字数は140文字以内、行数は15行以下を推奨します。長すぎるとモバイルで見切れる場合があります。
+          </Text>
+        </Alert>
+      </Card>
+
+      <Space h="lg" />
+
+      {/* 便利な使用場面セクション */}
+      <Card shadow="sm" padding="lg" radius="md" withBorder>
+        <Title order={3} mb="md">
+          こんな場面で便利
+        </Title>
+        <List spacing="sm">
+          <List.Item>
+            <Text>
+              <strong>俳句・短歌の投稿：</strong>
+              伝統的な縦書きで美しく表現したい時に
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>漢詩・古典文学：</strong>
+              漢文や古文を縦書きで格調高く投稿する際に
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>書道・習字の作品紹介：</strong>
+              実際の書作品と同じ縦書きレイアウトで文字を紹介
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>日本文化の発信：</strong>
+              茶道、華道などの和文化に関する投稿で雰囲気を演出
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>おしゃれな投稿：</strong>
+              普通の投稿と差をつけて、目を引く投稿を作りたい時に
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
+              <strong>年賀状・季節の挨拶：</strong>
+              新年の挨拶や季節のご挨拶を上品に表現
+            </Text>
+          </List.Item>
+        </List>
+      </Card>
 
       <Space h="md" />
       <AdSenseBanner
