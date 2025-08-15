@@ -16,7 +16,6 @@ import {
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
 import { AlertCircle, BrandTwitter } from 'tabler-icons-react';
 import { conv2TateTweet, getCharLength, getNoOfLines } from '../lib/convTweet';
-import AdSenseBanner from '../components/AdSenseBanner';
 import styles from './HomePage.module.css';
 
 const formatNumberToString = (val: number) => {
@@ -303,18 +302,10 @@ function HomePage() {
       </Card>
 
       <Space h="md" />
-      <AdSenseBanner
-        adClient="ca-pub-XXXXXXXXXXXXXXXXX"
-        adSlot="XXXXXXXXXX"
-        adStyle={{
-          display: 'block',
-          textAlign: 'center',
-          margin: '20px auto',
-          width: '100%',
-          maxWidth: '728px',
-          height: '90px',
-        }}
-      />
+      {/* 忍者AdMax 320x50 */}
+      <div style={{ textAlign: 'center', margin: '20px auto' }}>
+        <script src="https://adm.shinobi.jp/s/be8da8f686639f63fc5f39ffa220deb1"></script>
+      </div>
     </div>
   );
 }
