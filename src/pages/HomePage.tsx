@@ -221,7 +221,7 @@ function HomePage() {
       </div>
 
       {showAd && (
-        <Box hiddenFrom='sm' mt='md' style={{ textAlign: 'center' }}>
+        <Box hiddenFrom='sm' mt='md' style={{ textAlign: 'center', overflow: 'hidden' }}>
           <AdSense mobile />
         </Box>
       )}

@@ -32,18 +32,17 @@ export function AdSense({ mobile = false }: AdSenseProps) {
     return (
       <div
         style={{
-          width: mobile ? 300 : '100%',
-          height: mobile ? 250 : 100,
+          display: 'inline-flex',
+          width: mobile ? 320 : '100%',
+          height: mobile ? 100 : 100,
           background: '#e0e0e0',
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: '#888',
           fontSize: 14,
-          margin: mobile ? '0 auto' : undefined,
         }}
       >
-        {mobile ? '広告プレースホルダー（300×250）' : '広告プレースホルダー（レスポンシブ）'}
+        {mobile ? '広告プレースホルダー（320×100）' : '広告プレースホルダー（レスポンシブ）'}
       </div>
     );
   }
@@ -54,7 +53,7 @@ export function AdSense({ mobile = false }: AdSenseProps) {
     return (
       <ins
         className='adsbygoogle'
-        style={{ display: 'inline-block', width: 300, height: 250 }}
+        style={{ display: 'inline-block', width: 320, height: 100 }}
         data-ad-client={clientId}
         data-ad-slot={slot}
       />
