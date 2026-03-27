@@ -6,11 +6,17 @@ declare global {
   }
 }
 
-export function AdSense() {
+type AdSenseProps = {
+  mobile?: boolean;
+};
+
+export function AdSense({ mobile = false }: AdSenseProps) {
   const pushed = useRef(false);
   const isDev = import.meta.env.DEV;
   const clientId = import.meta.env.VITE_ADSENSE_CLIENT_ID;
-  const slot = import.meta.env.VITE_ADSENSE_SLOT;
+  const slot = mobile
+    ? import.meta.env.VITE_ADSENSE_SLOT_MOBILE
+    : import.meta.env.VITE_ADSENSE_SLOT;
 
   useEffect(() => {
     if (isDev || !clientId || !slot || pushed.current) return;
@@ -26,22 +32,34 @@ export function AdSense() {
     return (
       <div
         style={{
-          width: '100%',
-          height: 100,
+          width: mobile ? 300 : '100%',
+          height: mobile ? 250 : 100,
           background: '#e0e0e0',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: '#888',
           fontSize: 14,
+          margin: mobile ? '0 auto' : undefined,
         }}
       >
-        広告プレースホルダー（レスポンシブ）
+        {mobile ? '広告プレースホルダー（300×250）' : '広告プレースホルダー（レスポンシブ）'}
       </div>
     );
   }
 
   if (!clientId || !slot) return null;
+
+  if (mobile) {
+    return (
+      <ins
+        className='adsbygoogle'
+        style={{ display: 'inline-block', width: 300, height: 250 }}
+        data-ad-client={clientId}
+        data-ad-slot={slot}
+      />
+    );
+  }
 
   return (
     <ins
