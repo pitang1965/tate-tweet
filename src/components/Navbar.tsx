@@ -29,7 +29,7 @@ const Navbar: FC<NavbarProps> = ({ opened }) => {
           </NavLink>
         </AppShell.Section>
         <AppShell.Section mt="md">
-          <Box visibleFrom='sm'>
+          <Box visibleFrom='sm' style={{ overflow: 'hidden' }}>
             <AdSense />
           </Box>
         </AppShell.Section>

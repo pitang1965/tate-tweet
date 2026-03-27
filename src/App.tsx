@@ -18,7 +18,7 @@ function App() {
     <Router>
       <AppShell
         navbar={{
-          width: { sm: 200, lg: 300 },
+          width: { sm: 280, lg: 320 },
           breakpoint: 'sm',
           collapsed: { mobile: !opened },
         }}
