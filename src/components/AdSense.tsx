@@ -46,7 +46,7 @@ export function AdSense() {
   return (
     <ins
       className='adsbygoogle'
-      style={{ display: 'block', width: '100%' }}
+      style={{ display: 'block', width: '100%', maxWidth: '100%' }}
       data-ad-client={clientId}
       data-ad-slot={slot}
       data-ad-format='auto'

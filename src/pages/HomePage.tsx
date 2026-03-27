@@ -221,7 +221,7 @@ function HomePage() {
       </div>
 
       {showAd && (
-        <Box hiddenFrom='sm' mt='md'>
+        <Box hiddenFrom='sm' mt='md' style={{ overflow: 'hidden' }}>
           <AdSense />
         </Box>
       )}
