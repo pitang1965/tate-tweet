@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { AppShell } from '@mantine/core';
+import { AppShell, Box } from '@mantine/core';
 import { NavLink } from 'react-router-dom';
 import { IconHome, IconInfoCircle } from '@tabler/icons-react';
 import { AdSense } from './AdSense';
@@ -29,7 +29,9 @@ const Navbar: FC<NavbarProps> = ({ opened }) => {
           </NavLink>
         </AppShell.Section>
         <AppShell.Section mt="md">
-          <AdSense />
+          <Box visibleFrom='sm'>
+            <AdSense />
+          </Box>
         </AppShell.Section>
       </AppShell.Navbar>
     </>
