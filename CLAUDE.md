@@ -4,96 +4,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is "tate-tweet" (縦書きツイート) - a Japanese vertical text conversion tool for Twitter. It converts horizontal text to vertical Japanese writing format suitable for Twitter posts.
+This is "tate-tweet" (縦書きツイート) - a Japanese vertical text conversion tool for X (Twitter). It converts horizontal text to vertical Japanese writing format suitable for posting on X.
+
+**Production URL:** https://tate-tweet.over40web.club/
+**Netlify subdomain** (redirects to above): https://tate-tweet.netlify.app/
 
 ## Development Commands
 
 - `pnpm dev` - Start development server
 - `pnpm build` - Build for production (runs TypeScript compiler then Vite build)
 - `pnpm preview` - Preview production build
-- `pnpm test` - Run tests with Vitest
+- `pnpm test` - Run all tests with Vitest
+- `pnpm test src/lib/convTweet.ts` - Run tests in a specific file
 - `pnpm coverage` - Generate test coverage report
 
 ## Architecture
 
 ### Core Technology Stack
 - **Frontend**: React 18 with TypeScript
-- **Build Tool**: Vite 5 with React plugin
-- **UI Framework**: Mantine v7 (components, hooks, theming)
+- **Build Tool**: Vite 5
+- **UI Framework**: Mantine v7
 - **Routing**: React Router DOM v6
-- **Text Processing**: grapheme-splitter for proper Unicode character handling
-- **Icons**: Tabler Icons React
-- **PWA**: Vite Plugin PWA for offline functionality
+- **Text Processing**: grapheme-splitter for Unicode character handling
+- **PWA**: Vite Plugin PWA
 
 ### Application Structure
 
-**Main Entry Points:**
-- `src/main.tsx` - Application bootstrap with MantineProvider
-- `src/App.tsx` - Root component with AppShell layout and routing
+`src/App.tsx` sets up Mantine's `AppShell` with Header, Navbar (collapsible on mobile), Footer, and Main content area. Routes: `/` → HomePage, `/about` → AboutPage.
 
-**Layout Components:**
-- Uses Mantine's AppShell with navbar, aside panel, header, and footer
-- Responsive design with breakpoint-based visibility
-- Mobile-friendly with collapsible navigation
+**Core conversion logic** lives entirely in `src/lib/convTweet.ts`:
+- `conv2TateTweet(str, lineSpacing)` — main conversion function. Converts half-width to full-width, builds a 2D character array, rotates 90 degrees, inserts spacing, trims trailing whitespace.
+- `getCharLength(str)` — Twitter character count: newlines and half-width = 0.5, full-width/emoji = 1.0
+- `getNoOfLines(str)` — line count of input
 
-**Core Pages:**
-- `src/pages/HomePage.tsx` - Main conversion interface
-- `src/pages/AboutPage.tsx` - Information page
-- `src/pages/NotFoundPage.tsx` - 404 handler
+**HomePage** (`src/pages/HomePage.tsx`) uses `useDebouncedValue` (200ms) to trigger conversion on input changes. Warns when character count > 140 or line count > 15.
 
-**Text Conversion Logic:**
-- `src/lib/convTweet.ts` - Core vertical text conversion algorithms
-- Handles Japanese character conversion (half-width to full-width)
-- Supports configurable line spacing (none, half, full)
-- Character and line counting with Twitter limits validation
-- Unicode-aware text processing using GraphemeSplitter
+### In-Source Testing
 
-### Key Features Implementation
+Tests are embedded in source files using `if (import.meta.vitest)` blocks. Currently only `convTweet.ts` has tests. The `import.meta.vitest` guard is stripped in production builds via `vite.config.ts`.
 
-**Text Conversion Process:**
-1. Input validation and character counting
-2. Half-width to full-width character conversion
-3. Text splitting into 2D array representation
-4. 90-degree rotation for vertical layout
-5. Line spacing insertion based on user preference
-6. Trailing whitespace trimming
+### Deployment
 
-**User Interface:**
-- Real-time conversion preview with debounced updates (200ms)
-- Character count validation (140 character Twitter limit)
-- Line count warnings (15+ lines may break on mobile)
-- Copy to clipboard functionality
-- Direct Twitter integration via intent URLs
+- Hosted on Netlify
+- `public/_redirects` redirects `tate-tweet.netlify.app/*` → `tate-tweet.over40web.club/*` (301)
+- Environment variables use `VITE_` prefix (e.g., `VITE_ADSENSE_CLIENT_ID`)
 
-**PWA Configuration:**
-- Service worker for offline functionality
-- App manifest with Japanese metadata
-- Multiple icon sizes (192x192 to 512x512)
-- Standalone display mode
+### Advertising
 
-## Testing
-
-- Uses Vitest for unit testing with in-source test blocks
-- Test configuration in `vite.config.ts`
-- Coverage reporting with c8
-- Tests are embedded in source files using `if (import.meta.vitest)` blocks
-
-## Build Configuration
-
-**TypeScript:**
-- Strict mode enabled
-- ESNext target with modern module resolution
-- Vitest types included for in-source testing
-
-**Vite:**
-- Development server with React fast refresh
-- Production builds use Rollup bundling
-- PostCSS with Mantine preset for styling
-- PWA plugin with comprehensive asset caching
-
-## Styling Approach
-
-- CSS Modules for component-specific styles
-- Mantine's built-in theming system
-- Custom gradient buttons and responsive layouts
-- Japanese typography considerations (font stacks, character spacing)
+Currently uses 忍者AdMax script in `index.html` and `src/pages/HomePage.tsx`. Planning to migrate to Google AdSense using a React component with `VITE_ADSENSE_CLIENT_ID` env var.
