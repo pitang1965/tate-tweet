@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { Anchor, AppShell } from '@mantine/core';
-import { Link } from 'react-router-dom';
-import { BrandTwitter, InfoCircle } from 'tabler-icons-react';
+import { AppShell } from '@mantine/core';
+import { NavLink } from 'react-router-dom';
+import { IconHome, IconInfoCircle } from '@tabler/icons-react';
 import styles from './Navbar.module.css';
 
 type NavbarProps = {
@@ -9,20 +9,23 @@ type NavbarProps = {
 };
 
 const Navbar: FC<NavbarProps> = ({ opened }) => {
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `${styles.anchor} ${isActive ? styles.active : ''}`;
+
   return (
     <>
       <AppShell.Navbar p="md" hidden={!opened}>
         <AppShell.Section mt="xs">
-          <Anchor component={Link} to="/" className={styles.anchor}>
-            <BrandTwitter />
-            <div>Tweet</div>
-          </Anchor>
+          <NavLink to="/" end className={linkClass}>
+            <IconHome />
+            <div>Home</div>
+          </NavLink>
         </AppShell.Section>
         <AppShell.Section mt="xs">
-          <Anchor component={Link} to="about" className={styles.anchor}>
-            <InfoCircle />
+          <NavLink to="about" className={linkClass}>
+            <IconInfoCircle />
             <div>About</div>
-          </Anchor>
+          </NavLink>
         </AppShell.Section>
       </AppShell.Navbar>
     </>

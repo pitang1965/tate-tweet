@@ -14,7 +14,7 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
-import { AlertCircle, BrandTwitter } from 'tabler-icons-react';
+import { IconAlertCircle, IconBrandX } from '@tabler/icons-react';
 import { conv2TateTweet, getCharLength, getNoOfLines } from '../lib/convTweet';
 import styles from './HomePage.module.css';
 
@@ -121,7 +121,7 @@ function HomePage() {
       <Space h="md" />
       {noOfCharOfTateTweet > 140 ? (
         <Alert
-          icon={<AlertCircle size={16} />}
+          icon={<IconAlertCircle size={16} />}
           title="文字数オーバー!"
           color="red"
           radius="md"
@@ -138,7 +138,7 @@ function HomePage() {
       <Space h="md" />
       {noOfLinesAfterConversion > 15 ? (
         <Alert
-          icon={<AlertCircle size={16} />}
+          icon={<IconAlertCircle size={16} />}
           title="行数が多いです。"
           color="pink"
           radius="md"
@@ -193,7 +193,7 @@ function HomePage() {
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
             tateTweet
           )}`}
-          leftSection={<BrandTwitter size={18} />}
+          leftSection={<IconBrandX size={18} />}
           size="sm"
           styles={(theme) => ({
             root: {
@@ -214,7 +214,7 @@ function HomePage() {
       </div>
 
       <Space h="xl" />
-      
+
       {/* 使い方説明セクション */}
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Title order={3} mb="md">
@@ -242,12 +242,12 @@ function HomePage() {
           <List.Item>
             <Text>
               <strong>コピー・投稿：</strong>
-              「コピー」ボタンでクリップボードにコピー、または「Xに飛ぶ」ボタンで直接X(旧Twitter)の投稿画面に移動できます
+              「コピー」ボタンでクリップボードにコピー、または「X」ボタンで直接X(旧Twitter)の投稿画面に移動できます
             </Text>
           </List.Item>
         </List>
         <Space h="sm" />
-        <Alert variant="light" color="blue" icon={<AlertCircle size={16} />}>
+        <Alert variant="light" color="blue" icon={<IconAlertCircle size={16} />}>
           <Text size="sm">
             文字数は140文字以内、行数は15行以下を推奨します。長すぎるとモバイルで見切れる場合があります。
           </Text>

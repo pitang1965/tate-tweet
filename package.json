@@ -15,11 +15,11 @@
     "@emotion/react": "^11.14.0",
     "@mantine/core": "^8.3.18",
     "@mantine/hooks": "^8.3.18",
+    "@tabler/icons-react": "^3.41.0",
     "grapheme-splitter": "^1.0.4",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.2",
-    "tabler-icons-react": "^1.56.0"
+    "react-router-dom": "^7.13.2"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",

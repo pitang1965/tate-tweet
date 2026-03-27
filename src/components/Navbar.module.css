@@ -3,8 +3,14 @@
   flex-direction: row;
   gap: 0.5rem;
   text-decoration: none;
+  color: inherit;
   &:hover {
     color: #0077cc;
     text-decoration: none;
   }
+}
+
+.active {
+  color: #0077cc;
+  font-weight: bold;
 }
