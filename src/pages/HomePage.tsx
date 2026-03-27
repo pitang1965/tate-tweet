@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   Alert,
+  Box,
   Button,
   Card,
   darken,
@@ -16,6 +17,7 @@ import {
 import { useClipboard, useDebouncedValue } from '@mantine/hooks';
 import { IconAlertCircle, IconBrandX } from '@tabler/icons-react';
 import { conv2TateTweet, getCharLength, getNoOfLines } from '../lib/convTweet';
+import { AdSense } from '../components/AdSense';
 import styles from './HomePage.module.css';
 
 const formatNumberToString = (val: number) => {
@@ -76,9 +78,13 @@ function HomePage() {
   }
 
   const theme = useMantineTheme();
+  const [showAd, setShowAd] = useState(false);
 
   const handleClear = () => setTweet('');
-  const handleCopy = () => clipboard.copy(tateTweet);
+  const handleCopy = () => {
+    clipboard.copy(tateTweet);
+    setShowAd(true);
+  };
 
   return (
     <div
@@ -195,6 +201,7 @@ function HomePage() {
           )}`}
           leftSection={<IconBrandX size={18} />}
           size="sm"
+          onClick={() => setShowAd(true)}
           styles={(theme) => ({
             root: {
               backgroundColor: '#00acee',
@@ -212,6 +219,12 @@ function HomePage() {
           Xに飛ぶ
         </Button>
       </div>
+
+      {showAd && (
+        <Box hiddenFrom='sm' mt='md'>
+          <AdSense />
+        </Box>
+      )}
 
       <Space h="xl" />
 
@@ -300,12 +313,6 @@ function HomePage() {
           </List.Item>
         </List>
       </Card>
-
-      <Space h="md" />
-      {/* 忍者AdMax 320x50 */}
-      <div style={{ textAlign: 'center', margin: '20px auto' }}>
-        <script src="https://adm.shinobi.jp/s/be8da8f686639f63fc5f39ffa220deb1"></script>
-      </div>
     </div>
   );
 }

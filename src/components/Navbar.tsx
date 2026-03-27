@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { AppShell } from '@mantine/core';
 import { NavLink } from 'react-router-dom';
 import { IconHome, IconInfoCircle } from '@tabler/icons-react';
+import { AdSense } from './AdSense';
 import styles from './Navbar.module.css';
 
 type NavbarProps = {
@@ -26,6 +27,9 @@ const Navbar: FC<NavbarProps> = ({ opened }) => {
             <IconInfoCircle />
             <div>About</div>
           </NavLink>
+        </AppShell.Section>
+        <AppShell.Section mt="md">
+          <AdSense />
         </AppShell.Section>
       </AppShell.Navbar>
     </>
